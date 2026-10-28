@@ -1,0 +1,221 @@
+:root {
+  --fondo: #f4f5f7;
+  --tarjeta: #ffffff;
+  --texto: #1d2433;
+  --suave: #5d6678;
+  --borde: #e2e5ea;
+  --acento: #1e3c78;
+  --critico: #c81e2d;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  margin: 0;
+  height: 100%;
+}
+
+body {
+  font-family: 'Inter', system-ui, sans-serif;
+  background: var(--fondo);
+  color: var(--texto);
+}
+
+.app {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.encabezado {
+  padding: 18px 24px 10px;
+}
+
+.sobretitulo {
+  margin: 0 0 4px;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--acento);
+}
+
+h1 {
+  margin: 0;
+  font-size: clamp(20px, 3vw, 28px);
+  line-height: 1.2;
+}
+
+.fuente {
+  margin: 6px 0 0;
+  font-size: 13px;
+  color: var(--suave);
+}
+
+.indicadores {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+  padding: 8px 24px 16px;
+}
+
+.indicador {
+  background: var(--tarjeta);
+  border: 1px solid var(--borde);
+  border-radius: 10px;
+  padding: 14px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.indicador .valor {
+  font-size: 28px;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
+
+.indicador .etiqueta {
+  font-size: 13px;
+  color: var(--suave);
+}
+
+.indicador.critico {
+  border-left: 4px solid var(--critico);
+}
+
+.indicador.critico .valor {
+  color: var(--critico);
+}
+
+.mapa-contenedor {
+  position: relative;
+  flex: 1;
+  min-height: 420px;
+  margin: 0 24px 24px;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid var(--borde);
+}
+
+.panel {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  background: rgba(255, 255, 255, 0.95);
+  border: 1px solid var(--borde);
+  border-radius: 10px;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  max-width: 260px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.selector {
+  display: flex;
+  gap: 4px;
+}
+
+.selector button {
+  flex: 1;
+  border: 1px solid var(--borde);
+  background: #fff;
+  border-radius: 6px;
+  padding: 6px 8px;
+  font: inherit;
+  font-size: 12px;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.selector button.activo {
+  background: var(--acento);
+  border-color: var(--acento);
+  color: #fff;
+}
+
+.leyenda {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  font-size: 12px;
+}
+
+.leyenda span {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.leyenda i {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  border: 1px solid #fff;
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.15);
+}
+
+.leyenda small {
+  color: var(--suave);
+}
+
+.aviso {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  padding: 24px;
+  text-align: center;
+  background: rgba(244, 245, 247, 0.85);
+  font-weight: 500;
+}
+
+.tooltip {
+  background: #fff !important;
+  color: var(--texto) !important;
+  border: 1px solid var(--borde);
+  border-radius: 8px;
+  padding: 10px 12px !important;
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: 13px !important;
+  line-height: 1.5;
+  max-width: 260px;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.15);
+}
+
+.tt-titulo {
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+
+.tt-desc {
+  margin-top: 4px;
+  color: var(--suave);
+}
+
+@media (max-width: 760px) {
+  .encabezado {
+    padding: 14px 16px 8px;
+  }
+  .indicadores {
+    grid-template-columns: repeat(2, 1fr);
+    padding: 8px 16px 12px;
+    gap: 8px;
+  }
+  .indicador .valor {
+    font-size: 22px;
+  }
+  .mapa-contenedor {
+    margin: 0 16px 16px;
+    min-height: 460px;
+  }
+  .panel {
+    max-width: calc(100% - 24px);
+  }
+}
